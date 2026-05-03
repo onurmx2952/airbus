@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Airbus-style PFD + ILS Prototype</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="layout">
+    <section class="left">
+      <h1>Airbus-style PFD + ILS Prototype</h1>
+      <p class="note">
+        Bu sürüm gerçekçi veri akışı mantığı içindir: uçak state üretir, ILS hesaplanır,
+        PFD sadece gelen veriyi çizer.
+      </p>
+
+      <div class="buttons">
+        <button id="startBtn">Başlat / Durdur</button>
+        <button id="resetBtn">Reset</button>
+        <button id="approachBtn">Yaklaşmaya Oturt</button>
+      </div>
+
+      <div class="selectrow">
+        <label>ILS seç:
+          <select id="ilsSelect"></select>
+        </label>
+      </div>
+
+      <div class="controls">
+        <label>Hız <span id="speedVal"></span>
+          <input id="speed" type="range" min="100" max="230" value="145">
+        </label>
+        <label>İrtifa <span id="altVal"></span>
+          <input id="alt" type="range" min="500" max="7000" value="4200">
+        </label>
+        <label>Heading <span id="hdgVal"></span>
+          <input id="hdg" type="range" min="0" max="359" value="252">
+        </label>
+        <label>Pitch <span id="pitchVal"></span>
+          <input id="pitch" type="range" min="-10" max="10" value="-2" step="0.1">
+        </label>
+        <label>Roll <span id="rollVal"></span>
+          <input id="roll" type="range" min="-35" max="35" value="0" step="0.1">
+        </label>
+        <label>Vertical Speed <span id="vsVal"></span>
+          <input id="vs" type="range" min="-2500" max="1500" value="-700">
+        </label>
+      </div>
+
+      <pre id="debug"></pre>
+    </section>
+
+    <section class="right">
+      <canvas id="pfd" width="720" height="720"></canvas>
+      <canvas id="map" width="720" height="260"></canvas>
+    </section>
+  </main>
+
+  <script src="js/utils.js"></script>
+  <script src="js/navdata.js"></script>
+  <script src="js/aircraft.js"></script>
+  <script src="js/ils.js"></script>
+  <script src="js/pfd.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
